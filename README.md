@@ -16,6 +16,54 @@ A secure Job Application Tracking System built using Spring Boot and MySQL that 
 - Swagger API Documentation
 
 ---
+## System Architecture
+
+```text
++------------+
+|   Client   |
+| Postman /  |
+|  Swagger   |
++-----+------+
+      |
+      v
++-------------------+
+| Spring Boot APIs  |
+| Controllers       |
++---------+---------+
+          |
+          v
++-------------------+
+| Service Layer     |
+| Business Logic    |
++---------+---------+
+          |
+          v
++-------------------+
+| Repository Layer  |
+| Spring Data JPA   |
++---------+---------+
+          |
+          v
++-------------------+
+|     MySQL DB      |
++-------------------+
+
+Security Flow
+
+User Login
+    |
+    v
+JWT Token Generated
+    |
+    v
+Authorization Header
+    |
+    v
+JWT Filter
+    |
+    v
+Protected APIs
+```
 
 ## Application Workflow
 
