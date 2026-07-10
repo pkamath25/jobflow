@@ -1,5 +1,6 @@
 package com.pranamya.jobtracker.auth;
 
+import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
 import org.springframework.stereotype.Service;
@@ -26,5 +27,26 @@ public class JwtService {
                                         + 86400000))
                 .signWith(key)
                 .compact();
+    }
+
+    public String extractEmail(String token) {
+
+        Claims claims = Jwts.parser()
+                .verifyWith(key)
+                .build()
+                .parseSignedClaims(token)
+                .getPayload();
+
+        return claims.getSubject();
+    }
+
+    public boolean isValid(String token) {
+
+        try {
+            extractEmail(token);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
     }
 }
