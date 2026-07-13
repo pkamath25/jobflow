@@ -1,4 +1,4 @@
-# JobFlow 🚀
+# JobFlow 
 
 A secure Job Application Tracking System built using Spring Boot and MySQL that helps users manage job applications, track interview progress, and monitor application statistics through dashboard analytics.
 
